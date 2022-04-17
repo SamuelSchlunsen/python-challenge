@@ -7,7 +7,9 @@ import csv
 from pickletools import long1
 from statistics import mean
 
-with open("budget_data.csv" ) as csvfile:
+
+
+with open("PyBank\Resources\cudget_data.csv") as csvfile:
 
     rows = csv.reader(csvfile, delimiter=',')
 
@@ -36,17 +38,19 @@ month.pop(0)
 
 int_earning = [round(float(s)) for s in earnings]
 
+with open("PyBank\onalysis\output.txt" , "w") as external_file:
 
+    print("Financial Analysis" , file = external_file)
 
-print("Financial Analysis")
+    print("----------------------------" , file = external_file)
 
-print("----------------------------")
+    print("Total Months: " + str(len(month)) , file = external_file) 
 
-print("Total Months: " + str(len(month))) 
+    print("Total: $" + str(sum(int_earning)) , file = external_file) 
 
-print("Total: $" + str(sum(int_earning))) 
+    print("Average Change: $" + str(mean(int_earning)), file = external_file)
 
-print("Average Change: $" + str(mean(int_earning)))
+    external_file.close()
 
 
 
